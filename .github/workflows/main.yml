@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ inputs.source_repo }}
+          repository: 5tuay10bath/deawkoikid-fe
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
