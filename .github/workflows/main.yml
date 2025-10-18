@@ -14,36 +14,6 @@ defaults:
 jobs:
   deploy:
     runs-on: self-hosted
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          repository: 5tuay10bath/deawkoikid-fe
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@v4
-        with:
-          version: 'latest'
-
-      - name: Apply Kubernetes manifests
-        run: |
-name: Deploy to Kubernetes
-
-on:
-  workflow_call:
-    inputs:
-      source_repo:
-        required: true
-        type: string
-
-defaults:
-  run:
-    shell: bash
-
-jobs:
-  deploy:
-    runs-on: self-hosted
     env:
       KUBECONFIG: /home/title/.kube/config
 
