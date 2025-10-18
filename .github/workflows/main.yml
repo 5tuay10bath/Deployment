@@ -13,7 +13,7 @@ defaults:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted,linux]
     env:
       KUBECONFIG: /home/title/.kube/config
 
