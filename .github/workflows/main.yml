@@ -9,12 +9,11 @@ on:
 
 defaults:
   run:
-    shell: pwsh
+    shell: cmd
 
 jobs:
   deploy:
     runs-on: self-hosted
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,14 +26,10 @@ jobs:
           version: 'latest'
 
       - name: Apply Kubernetes manifests
+        shell: cmd
         run: |
-          try {
-            kubectl apply -f k8s/namespace.yaml -ErrorAction Stop
-          } catch {
-            Write-Host "(already exists)"
-          }
-
-          kubectl wait --for=condition=Established --timeout=30s ns/deawkoikid
-          kubectl apply -f k8s/
+          kubectl apply -f k8s\namespace.yaml || echo (already exists)
+          kubectl wait --for=condition=Established --timeout=30s ns\deawkoikid
+          kubectl apply -f k8s\
           kubectl get pods -n deawkoikid
-          Write-Host "Done"
+          echo Done
