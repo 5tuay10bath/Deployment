@@ -9,7 +9,8 @@ on:
 
 defaults:
   run:
-    shell: cmd
+    shell: bash
+
 
 jobs:
   deploy:
@@ -26,10 +27,10 @@ jobs:
           version: 'latest'
 
       - name: Apply Kubernetes manifests
-        shell: cmd
+        shell: bash
         run: |
-          kubectl apply -f k8s\namespace.yaml || echo (already exists)
-          kubectl wait --for=condition=Established --timeout=30s ns\deawkoikid
-          kubectl apply -f k8s\
+          kubectl apply -f k8s/namespace.yaml || echo "already exists"
+          kubectl wait --for=condition=Established --timeout=30s ns/deawkoikid
+          kubectl apply -f k8s/
           kubectl get pods -n deawkoikid
           echo Done
