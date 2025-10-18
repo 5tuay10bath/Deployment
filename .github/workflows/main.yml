@@ -38,5 +38,5 @@ jobs:
           kubectl apply -f k8s/namespace.yaml || echo "already exists"
           kubectl apply -f k8s/
           kubectl get pods -n deawkoikid
-          echo "✅ Done
+          echo "✅ Done"
 
